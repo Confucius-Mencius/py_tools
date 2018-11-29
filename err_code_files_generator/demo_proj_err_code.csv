@@ -1,0 +1,4 @@
+name,value,desc_en,desc_zh
+ERR_OK,0,success,成功
+ERR_INVALID_PARAM,1,invalid param,参数非法
+ERR_SYS_ERROR,2,system error,系统错误

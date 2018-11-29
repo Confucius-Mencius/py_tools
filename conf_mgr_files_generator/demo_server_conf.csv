@@ -1,0 +1,14 @@
+type,name,xpath,group,virtual,with_default,default
+bool,test_mode,/conf/app/test_mode,0,1,1,0
+string,lua_dir,/conf/app/lua_dir,0,1,0,
+string,zk_host,/conf/app/zk/host,0,1,0,
+int,zk_timeout,/conf/app/zk/timeout,0,1,0,
+int,zk_log_level,/conf/app/zk/log_level,0,1,0,
+string,zk_log_file_path,/conf/app/zk/log_file_path,0,1,0,
+string,zk_user_pass,/conf/app/zk/user_pass,0,1,0,
+string,zk_conf_node,/conf/app/zk/conf_node,0,1,0,
+string,self_add_port,/conf/tcp/addr_port,0,1,0,
+string,remote_tcp_addr_port,/conf/app/remote_tcp_addr_port,0,1,0,
+string,remote_http_addr_port,/conf/app/remote_http_addr_port,0,1,0,
+string,remote_https_addr_port,/conf/app/remote_https_addr_port,0,1,0,
+string,remote_udp_addr_port,/conf/app/remote_udp_addr_port,0,1,0,
