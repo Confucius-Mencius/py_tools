@@ -1,0 +1,61 @@
+package com.moon.demo.proto;
+
+import "common.proto";
+
+message Demo1Req {
+    required int32 a = 1;
+}
+
+message Demo1Rsp {
+    required ErrCtx err_ctx = 1;
+}
+
+message Demo2Req {
+    required int32 a = 1;
+}
+
+message Demo2Rsp {
+    required ErrCtx err_ctx = 1;
+}
+
+message Demo3Req {
+    required int32 a = 1;
+}
+
+message Demo3Rsp {
+    required ErrCtx err_ctx = 1;
+}
+
+// 消息流转测试用
+enum Demo4Flag {
+    option allow_alias = true;
+    DEMO_4_FLAG_MIN = 0;
+    DEMO_4_FLAG_IO_TO_WORK = 0;
+    DEMO_4_FLAG_WORK_TO_WORK = 1;
+    DEMO_4_FLAG_WORK_TO_BURDEN = 2;
+    DEMO_4_FLAG_BURDEN_TO_BURDEN = 3;
+    DEMO_4_FLAG_MAX = 4;
+}
+
+message Demo4Req {
+    required int32 a = 1;
+    required int64 b = 2;
+    required string c = 3;
+    optional bytes d = 4; // post body
+    optional Demo4Flag flag = 5;
+}
+
+message Demo4Rsp {
+    required ErrCtx err_ctx = 1;
+}
+
+message Demo5Req {
+    required int32 a = 1;
+    required int64 b = 2;
+    required string c = 3;
+    optional bytes d = 4; // post body
+}
+
+message Demo5Rsp {
+    required ErrCtx err_ctx = 1;
+}
