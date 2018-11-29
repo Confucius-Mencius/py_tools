@@ -1,5 +1,5 @@
 # gmock files generator
 
-根据接口生成google mock的c++代码文件。
+脚本读取c++头文件中的接口定义，生成google mock的c++代码文件。
 
-摘自gtest源码的googlemock/scripts/generator目录。
+这些脚本摘自gtest源码的googlemock/scripts/generator目录。
