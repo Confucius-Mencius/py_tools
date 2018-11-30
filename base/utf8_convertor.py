@@ -4,7 +4,7 @@
 # author: BrentHuang (guang11cheng@qq.com)
 ###############################################################################
 
-# 将文件编码转换成utf8格式
+# 将指定目录下指定扩展名的文件编码转换成utf8格式，包含子目录
 
 import argparse
 import math
@@ -84,7 +84,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('dir', help='dir')
-    parser.add_argument('filename_ext_list', metavar='ext', help='filename ext list', nargs='*')
+    parser.add_argument('filename_ext_list', metavar='ext', help='filename ext list, eg: .h .cpp', nargs='*')
 
     args = parser.parse_args()
     # print(args)
