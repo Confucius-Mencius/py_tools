@@ -58,7 +58,7 @@ def output_unzip_function(fp, xls_head_, xls_row_grid, xls_col_grid, indent):
         fp.write(content.encode('utf-8'))
 
         content = [indent * 2, '    if [ $? -ne 0 ]; then', os.linesep,
-                   indent * 2, '        echo "failed to unzip " ', file_path, os.linesep,
+                   indent * 2, '        echo "failed to unzip" ', file_path, os.linesep,
                    indent * 2, '        exit 1', os.linesep,
                    indent * 2, '    fi', os.linesep]
         fp.write(''.join(content).encode('utf-8'))

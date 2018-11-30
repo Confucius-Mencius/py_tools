@@ -20,31 +20,31 @@ function UnzipAll
 {
     tar -C ${ARCHIVES_DIR} -xvf ${ARCHIVES_DIR}/${XLRD_BASENAME}.tar.gz
     if [ $? -ne 0 ]; then
-        echo "failed to unzip " ${ARCHIVES_DIR}/${XLRD_BASENAME}.tar.gz
+        echo "failed to unzip" ${ARCHIVES_DIR}/${XLRD_BASENAME}.tar.gz
         exit 1
     fi
 
     tar -C ${ARCHIVES_DIR} -xvf ${ARCHIVES_DIR}/${XLSXWRITER_BASENAME}.tar.gz
     if [ $? -ne 0 ]; then
-        echo "failed to unzip " ${ARCHIVES_DIR}/${XLSXWRITER_BASENAME}.tar.gz
+        echo "failed to unzip" ${ARCHIVES_DIR}/${XLSXWRITER_BASENAME}.tar.gz
         exit 1
     fi
 
     tar -C ${ARCHIVES_DIR} -xvf ${ARCHIVES_DIR}/${NOSE_BASENAME}.tar.gz
     if [ $? -ne 0 ]; then
-        echo "failed to unzip " ${ARCHIVES_DIR}/${NOSE_BASENAME}.tar.gz
+        echo "failed to unzip" ${ARCHIVES_DIR}/${NOSE_BASENAME}.tar.gz
         exit 1
     fi
 
     tar -C ${ARCHIVES_DIR} -xvf ${ARCHIVES_DIR}/${CHARDET_BASENAME}.tar.gz
     if [ $? -ne 0 ]; then
-        echo "failed to unzip " ${ARCHIVES_DIR}/${CHARDET_BASENAME}.tar.gz
+        echo "failed to unzip" ${ARCHIVES_DIR}/${CHARDET_BASENAME}.tar.gz
         exit 1
     fi
 
     tar -C ${ARCHIVES_DIR} -xvf ${ARCHIVES_DIR}/${CONCURRENT_LOG_HANDLER_BASENAME}.tar.gz
     if [ $? -ne 0 ]; then
-        echo "failed to unzip " ${ARCHIVES_DIR}/${CONCURRENT_LOG_HANDLER_BASENAME}.tar.gz
+        echo "failed to unzip" ${ARCHIVES_DIR}/${CONCURRENT_LOG_HANDLER_BASENAME}.tar.gz
         exit 1
     fi
 }
