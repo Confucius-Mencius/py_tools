@@ -4,8 +4,9 @@
 # author: BrentHuang (guang11cheng@qq.com)
 ###############################################################################
 
-import logging
 import cloghandler
+import logging
+import sys
 
 
 class ConcurrentLogWrapper(object):
@@ -34,7 +35,7 @@ class ConcurrentLogWrapper(object):
 # base目录下的测试不要以test开头，否则会被外部使用者跑测试时一起跑
 def demo001():
     # log util
-    clog_wrapper = ConcurrentLogWrapper('my_app', './my_app.log')
+    clog_wrapper = ConcurrentLogWrapper('my_app', sys.path[0] + '/../logs/my_app.log')
 
     LOG_DEBUG = logging.getLogger(clog_wrapper.logger_name).debug
     LOG_INFO = logging.getLogger(clog_wrapper.logger_name).info

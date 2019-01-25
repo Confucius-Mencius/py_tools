@@ -69,7 +69,7 @@ def demo001():
 
 
 def demo002():
-    do('../data', ['.h'])
+    do(sys.path[0] + '/../data', ['.h'])
 
 
 def demo003():

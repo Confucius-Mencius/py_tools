@@ -6,6 +6,7 @@
 
 import chardet
 import os
+import sys
 
 
 def script_dir():
@@ -200,7 +201,10 @@ def convert_to_utf8(from_file_path, to_file_path):
 
 
 def demo001():
-    assert os.getcwd() == script_dir()
+    print os.getcwd()
+    print sys.path[0]  # 脚本文件自身所在的绝对目录
+    print script_dir()
+    assert sys.path[0] == script_dir()
     assert '/tmp' == file_dir('/tmp/my_app.log')
     assert os.getcwd() == file_dir('./my_app.log')
     assert 'my_app' == base_filename('/tmp/my_app.log')
@@ -215,21 +219,21 @@ def demo002():
 
 
 def demo003():
-    ret = replace_content('../data/xx_conf_mgr.h', ["Tcp TCP", "Io IO", "Cpu CPU", "Udp UDP"])
+    ret = replace_content(sys.path[0] + '/../data/xx_conf_mgr.h', ["Tcp TCP", "Io IO", "Cpu CPU", "Udp UDP"])
     assert 0 == ret
 
 
 def demo004():
-    gb2312_file = '../data/AboutLayer.h'
-    utf8_file1 = '../data/AboutLayer.h'
+    gb2312_file = sys.path[0] + '/../data/AboutLayer.h'
+    utf8_file1 = sys.path[0] + '/../data/AboutLayer.h'
     assert 0 == convert_to_utf8(gb2312_file, utf8_file1)
 
-    utf8_file = '../data/utf8_file'
+    utf8_file = sys.path[0] + '/../data/utf8_file'
     assert 0 == convert_to_utf8(utf8_file, None)
 
 
 if __name__ == '__main__':
-    # demo001()
-    demo002()
+    demo001()
+    # demo002()
     # demo003()
     # demo004()

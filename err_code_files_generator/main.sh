@@ -11,7 +11,7 @@ ITEM_LIST=(demo_proj)
 
 for i in ${ITEM_LIST[@]}; do
     CSV_FILE_PATH=${SCRIPT_PATH}/${i}_err_code.csv
-    OUTPUT_DIR=${SCRIPT_PATH}/output/${i}
+    OUTPUT_DIR=${SCRIPT_PATH}/output/$i
 
     python ${SCRIPT_PATH}/main.py ${CSV_FILE_PATH} ${OUTPUT_DIR}
 done

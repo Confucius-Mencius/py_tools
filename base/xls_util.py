@@ -359,15 +359,15 @@ def demo001():
 
 
 def demo002():
-    ret = convert_csv_to_xls('../data/third_party.csv', '../data')
+    ret = convert_csv_to_xls(sys.path[0] + '/../data/third_party.csv', sys.path[0] + '/../data')
     assert 0 == ret
 
-    ret = convert_csv_to_xls('../data', '../data')
+    ret = convert_csv_to_xls(sys.path[0] + '/../data', sys.path[0] + '/../data')
     assert 0 == ret
 
 
 def demo003():
-    xls_loader = XlsLoader('../data/third_party.csv', 1, 4,
+    xls_loader = XlsLoader(sys.path[0] + '/../data/third_party.csv', 1, 4,
                            [types.StringType, types.StringType, types.StringType, types.BooleanType])
     assert 0 == xls_loader.load()
 

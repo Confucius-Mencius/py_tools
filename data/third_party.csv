@@ -1,0 +1,107 @@
+key,basename,ext,inc,libs,bin,pack,use,note,inc表示是否生成inc目录指令
+M4,m4-1.4.18,tar.gz,0,,,0,1,http://ftp.gnu.org/gnu/m4/,pack表示是否打包libs和bin
+AUTOCONF,autoconf-2.69,tar.gz,0,,,0,1,"1，http://ftp.gnu.org/gnu/autoconf/
+2，依赖于m4",use表示是否使用
+AUTOMAKE,automake-1.16.1,tar.xz,0,,,0,1,http://ftp.gnu.org/gnu/automake/,
+LIBTOOL,libtool-2.4.6,tar.gz,0,,,0,1,http://ftp.gnu.org/gnu/libtool/,
+HELPTOMAN,help2man-1.47.8,tar.xz,0,,,0,1,http://ftp.gnu.org/gnu/help2man/,
+BISON,bison-3.2.2,tar.xz,0,,,0,1,http://ftp.gnu.org/gnu/bison/,
+FLEX,flex-2.6.3,tar.gz,0,,,0,1,"1，https://github.com/westes/flex/releases
+2，依赖于help2man和bison",flex2.6.4在gcc7.2以上编译失败，待2.6.5修复
+CMAKE,cmake-3.13.0,tar.gz,0,,,0,1,https://cmake.org/download/,
+SCONS,scons-3.0.1,tar.gz,0,,,0,1,http://scons.org/pages/download.html,
+BOOST,boost_1_68_0,tar.bz2,1,boost_system boost_thread boost_filesystem boost_program_options boost_locale,,1,1,1，http://www.boost.org/,
+CURL,curl-7.62.0,tar.xz,1,curl,curl,1,1,"1，https://curl.haxx.se/download.html
+2，依赖于openssl",
+ZLIB,zlib-1.2.11,tar.gz,1,z,,1,1,http://zlib.net/,
+XZ,xz-5.2.4,tar.xz,1,lzma,,1,1,https://www.tukaani.org/xz/,
+EXIV2,exiv2-0.26-trunk,tar.gz,1,exiv2,,1,1,"1，http://www.exiv2.org/
+2，依赖于zlib，libexpat1-dev (ubuntu) [expat-devel (centos)]",
+KCGI,kcgi-VERSION_0_9_7,tar.gz,1,kcgi,,1,0,https://github.com/kristapsdz/kcgi/releases,不再更新
+FCGI,fcgi-2.4.1,tar.gz,1,fcgi++ fcgi,,1,0,https://github.com/FastCGI-Archives/FastCGI.com/tree/master/original_snapshot,不再更新
+FLATBUF,flatbuffers-1.10.0,tar.gz,1,flatbuffers,flatc,1,1,"1，https://github.com/google/flatbuffers/releases
+2，需要支持c++0x的编译器",
+FREE_TYPE,freetype-2.9.1,tar.gz,1,freetype,,1,1,https://www.freetype.org/download.html,
+GFLAGS,gflags-2.2.2,tar.gz,1,gflags,,1,1,https://github.com/gflags/gflags/releases,
+GLOG,glog-0.3.5,tar.gz,1,glog,,1,1,https://github.com/google/glog/releases,
+GTEST,googletest-release-1.8.1,tar.gz,1,gmock gtest,,1,1,https://github.com/google/googletest/releases,
+GPERFTOOLS,gperftools-2.7,tar.gz,1,tcmalloc profiler,pprof,1,1,https://github.com/gperftools/gperftools/releases,
+HIREDIS,hiredis-0.14.0,tar.gz,1,hiredis,,1,1,https://github.com/redis/hiredis/releases,
+IMAGE_MAGICK,ImageMagick-7.0.8-14,tar.xz,1,MagickWand-6.Q16 Magick++-6.Q16 MagickCore-6.Q16,,1,1,https://www.imagemagick.org/download/releases/,
+JEMALLOC,jemalloc-5.1.0,tar.gz,0,,,0,1,https://github.com/jemalloc/jemalloc/releases,
+JSONCPP,jsoncpp-1.8.4,tar.gz,1,jsoncpp,,1,1,https://github.com/open-source-parsers/jsoncpp/releases,
+LIBEVENT,libevent-2.1.8-stable,tar.gz,1,event_core event_extra event_pthreads,,1,1,"1，http://libevent.org/
+2，依赖于openssl",
+LIBEVHTP,libevhtp-1.2.16,tar.gz,1,evhtp,,1,1,"1，https://github.com/criticalstack/libevhtp/releases
+2，依赖于libevent、openssl",
+LIBJPEG,jpegsrc.v9c,tar.gz,1,jpeg,,1,1,http://www.ijg.org/files/,
+LIBMAGIC,libmagic-5.18,tar.gz,1,magic,,1,1,https://github.com/threatstack/libmagic/releases,
+LIBPNG,libpng-1.6.35,tar.xz,1,png,,1,1,"1，http://www.libpng.org/pub/png/libpng.html
+2，依赖于zlib",
+LIBTIFF,libtiff-Release-v4-0-9,tar.gz,1,tiff,,1,1,https://github.com/vadz/libtiff/releases,
+LIBUNWIND,libunwind-1.2.1,tar.gz,1,unwind,,1,1,http://download.savannah.gnu.org/releases/libunwind/,
+LIBUUID,libuuid-1.0.3,tar.gz,1,uuid,,1,1,https://sourceforge.net/projects/libuuid/,
+LIBXML2,libxml2-2.9.8,tar.gz,1,xml2,,1,1,"1，ftp://xmlsoft.org/libxml2/
+2，依赖于libexpat1-dev (ubuntu) [expat-devel (centos)]
+3，依赖于zlib和xz",
+LIGHTTPD,lighttpd-1.4.45,tar.gz,0,,,0,0,http://www.lighttpd.net/,不再更新
+LOG4CPLUS,log4cplus-2.0.2,tar.xz,1,log4cplus,loggingserver,1,1,https://github.com/log4cplus/log4cplus/releases,
+NCURSES,ncurses-6.1,tar.gz,0,,,1,1,http://ftp.gnu.org/gnu/ncurses/,
+READLINE,readline-7.0,tar.gz,0,,,1,1,"1，ftp://ftp.gnu.org/gnu/readline/
+2，依赖于ncurses",
+LUA,lua-5.3.5,tar.gz,1,lua,lua,1,1,"1，http://www.lua.org/download.html
+2，依赖于ncurses，readline",
+LIBBSON,libbson-1.9.5,tar.gz,1,bson-1.0,,1,1,https://github.com/mongodb/libbson/releases,
+MONGO_C_DRIVER,mongo-c-driver-1.13.0,tar.gz,1,mongoc-1.0,,1,1,"1，https://github.com/mongodb/mongo-c-driver/releases
+2，依赖于libbson",
+MONGO_CXX_DRIVER,mongo-cxx-driver-r3.4.0,tar.gz,1,mongocxx bsoncxx,,1,1,"1，https://github.com/mongodb/mongo-cxx-driver/releases
+2，依赖于mongo c driver",
+MONGO_CXX_DRIVER_LEGACY,mongo-cxx-driver-legacy-1.1.2,tar.gz,1,mongoclient,,1,0,"1，https://github.com/mongodb/mongo-cxx-driver/releases
+2，依赖于boost",不再更新
+MSGPACK,msgpack-c-cpp-3.1.1,tar.gz,1,msgpack,,1,1,https://github.com/msgpack/msgpack-c/releases,
+OPENCC,OpenCC-ver.1.0.5,tar.gz,1,opencc,,1,1,"1，https://github.com/BYVoid/OpenCC/releases
+2，需要支持c++0x的编译器",
+OPENSSL,openssl-1.0.2q,tar.gz,1,crypto ssl,,1,1,"1，https://www.openssl.org/source/
+2，https://github.com/openssl/openssl/releases
+3，不要使用1.1版本，部分接口有变化",
+PCRE,pcre-8.42,tar.gz,0,,,1,1,"1、https://sourceforge.net/projects/pcre
+2、不要用pcre2",
+PROTOBUF,protobuf-3.6.1,tar.gz,1,protobuf,protoc,1,1,"1、https://github.com/google/protobuf/releases
+2、注意：更新protobuf版本后，一定要更新py_test中的google文件夹！！",
+RAPIDJSON,rapidjson-1.1.0,tar.gz,1,,,1,1,https://github.com/miloyip/rapidjson/releases,
+REDIS,redis-5.0.0,tar.gz,0,,,0,1,https://redis.io/,
+SNAPPY,snappy-1.1.7,tar.gz,1,snappy,,1,1,https://github.com/google/snappy/releases,
+SPAWN_FCGI,spawn-fcgi-1.6.4,tar.gz,0,,,0,0,https://github.com/lighttpd/spawn-fcgi/releases,不再更新
+SWIG,swig-3.0.12,tar.gz,0,,,0,1,"1，http://www.swig.org/download.html
+2，依赖于pcre",
+NGINX,nginx-1.14.1,tar.gz,1,,,0,1,"1，http://nginx.org/en/download.html
+2，依赖于pcre、zlib、openssl",
+TENGINE,tengine-2.2.3,tar.gz,1,,,0,1,"1，http://tengine.taobao.org/download.html
+2，依赖于pcre、openssl、jemalloc",
+THRIFT,thrift-0.11.0,tar.gz,1,thriftnb thrift,thrift,1,1,"1，http://thrift.apache.org/
+2，依赖于python2.7-dev (ubuntu) [python-devel (centos)]、libevent、openssl、boost",
+TOLUAPP,toluapp,tar.gz,1,tolua++,tolua++,1,0,"https://github.com/waltervn/toluapp
+https://github.com/LuaDist/toluapp
+https://github.com/LuaDist/tolua",不再更新
+ZOOKEEPER,zookeeper-3.4.13,tar.gz,1,zookeeper_mt,,1,1,http://zookeeper.apache.org/,
+OPENPGM,libpgm-5.2.122,tar.gz,1,pgm,,1,1,https://code.google.com/archive/p/openpgm/downloads,不再更新
+ZEROMQ,zeromq-4.2.5,tar.gz,1,zmq,,1,1,http://zeromq.org/intro:get-the-software,
+UDT,udt.sdk.4.11,tar.gz,1,udt,,1,1,https://sourceforge.net/projects/udt/?source=directory,不再更新
+MYSQL_CLIENT,mysql-5.6.40,tar.gz,1,mysqlclient,,1,1,"1，https://dev.mysql.com/downloads/mysql/
+2，依赖于ncurses",未更新，新版本使用了cmake，不好用
+JANSSON,jansson-2.10,tar.gz,1,jansson,,1,0,https://github.com/akheron/jansson/releases,不再更新
+JSON2PB,json2pb-master,zip,1,json2pb,,1,0,https://github.com/shramov/json2pb,不再更新
+LIBWEBSOCKETS,libwebsockets-3.0.1,tar.gz,1,websockets,,1,1,"1，https://github.com/warmcat/libwebsockets/releases
+2，依赖于libevent、openssl、zlib",
+LEVELDB,leveldb-1.20,tar.gz,1,leveldb,,1,1,https://github.com/google/leveldb/releases,
+MUPDF,mupdf-1.14.0-source,tar.xz,1,mupdf,mupdf-gl mupdf-x11 mutool,1,1,https://www.mupdf.com/downloads/index.html,
+ASSIMP,assimp-4.1.0,tar.gz,1,assimp,assimp,1,1,https://github.com/assimp/assimp/releases,
+FFMPEG,ffmpeg-4.1,tar.bz2,1,ffmpeg,ffmpeg ffprobe,1,1,http://www.ffmpeg.org/download.html,
+ASTYLE,astyle_3.1,tar.gz,0,,,0,1,https://sourceforge.net/projects/astyle/files/astyle/,
+SPDLOG,spdlog-1.2.1,tar.gz,1,,,1,1,https://github.com/gabime/spdlog/releases,
+RTMPDUMP,rtmpdump-2.4,tar.gz,1,rtmp,rtmpdump rtmpgw rtmpsrv rtmpsuck,1,1,"1、git clone git://git.ffmpeg.org/rtmpdump
+2、http://rtmpdump.mplayerhq.hu/download/",
+SRS,srs-2.0-r5,tar.gz,0,,,0,1,https://github.com/ossrs/srs/releases,
+FDK_AAC,fdk-aac-2.0.0,tar.gz,1,fdk_aac,,1,1,http://www.linuxfromscratch.org/blfs/view/svn/multimedia/fdk-aac.html,
+X264,x264,tar.bz2,1,x264,,1,1,https://www.videolan.org/developers/x264.html,
+NASM,nasm-2.14.01,tar.xz,0,,,0,1,https://www.nasm.us/,
