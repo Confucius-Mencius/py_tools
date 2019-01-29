@@ -202,7 +202,7 @@ def convert_to_utf8(from_file_path, to_file_path):
 
 def demo001():
     print os.getcwd()
-    print sys.path[0]  # 脚本文件自身所在的绝对目录
+    print sys.path[0]  # 脚本文件自身所在的绝对目录，注意：这里的脚本文件指的是启动的那个脚本文件
     print script_dir()
     assert sys.path[0] == script_dir()
     assert '/tmp' == file_dir('/tmp/my_app.log')

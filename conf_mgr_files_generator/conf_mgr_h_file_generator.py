@@ -362,7 +362,7 @@ def generate_conf_mgr_h_file(xls_head_, xls_row_grid, xls_col_grid, output_dir):
 
 private:
     ///////////////////////// base::ConfMgrInterface /////////////////////////
-    virtual int Load();
+    int Load() override;
 
 public:
     ///////////////////////// ConfMgrInterface /////////////////////////

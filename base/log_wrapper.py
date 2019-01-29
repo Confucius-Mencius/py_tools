@@ -33,7 +33,7 @@ class LogWrapper(object):
 
 def demo001():
     # log util
-    log_wrapper = LogWrapper('my_app', sys.path[0] + '/../logs/my_app.log')
+    log_wrapper = LogWrapper('my_app', './my_app.log')
 
     LOG_DEBUG = logging.getLogger(log_wrapper.logger_name).debug
     LOG_INFO = logging.getLogger(log_wrapper.logger_name).info
