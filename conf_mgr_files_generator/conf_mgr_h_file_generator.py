@@ -382,7 +382,7 @@ public:
 
         fp.close()
 
-        file_util.replace_content(file_path, ["Tcp TCP", "Io IO", "Cpu CPU", "Udp UDP", "Http HTTP", "Tq TQ"])
+        file_util.replace_content(file_path, ["Tcp TCP", "Io IO", "Cpu CPU", "Udp UDP", "Http HTTP", "Tq TQ", "Ws WS", "Wss WSS", "WSs WSS"])
         print('=== generate %s done ===' % file_path)
 
         return 0
