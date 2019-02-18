@@ -54,6 +54,13 @@ function BuildAll
         exit 1
     fi
 
+    cd ${SCRIPT_PATH}
+    ./build_websocket_client.sh
+    if [ $? -ne 0 ]; then
+        echo "failed to build websocket client"
+        exit 1
+    fi
+
     echo `date` >>build_time.txt
 }
 
