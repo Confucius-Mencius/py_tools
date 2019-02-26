@@ -22,7 +22,7 @@ def process_routine(file_path_list):
     # print(file_path_list)
 
     for file_path in file_path_list:
-        file_util.convert_to_utf8(file_path, file_path)
+        file_util.convert_to_utf8(file_path, file_path, True)
 
 
 def partition(file_path_list):

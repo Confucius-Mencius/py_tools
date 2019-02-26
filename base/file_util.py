@@ -4,6 +4,7 @@
 # author: BrentHuang (guang11cheng@qq.com)
 ###############################################################################
 
+import codecs;
 import chardet
 import os
 import sys
@@ -171,7 +172,7 @@ def replace_content(file_path, text_list):
         return -1
 
 
-def convert_to_utf8(from_file_path, to_file_path):
+def convert_to_utf8(from_file_path, to_file_path, add_bom=False):
     try:
         from_file = open(from_file_path, 'rb')
         from_file_content = from_file.read()
@@ -180,19 +181,34 @@ def convert_to_utf8(from_file_path, to_file_path):
         from_file_encoding = chardet.detect(from_file_content)['encoding']
         print('from file path: %s(%s)' % (from_file_path, from_file_encoding))
 
-        # (1) utf-8不用转
-        # (2) ascii是utf-8的子集，也不用转
-        if from_file_encoding != 'utf-8' and from_file_encoding != 'ascii':
+        # (1) ascii是utf-8的子集，不用转
+        # (2) utf - 8 不用转，如果没有bom头就加上
+        if 0 == from_file_encoding.lower().find('ascii'):
+            return 0
+        elif -1 == from_file_encoding.lower().find('utf-8'):
             if not os.path.exists(to_file_path):
                 create_file(to_file_path)
             else:
-                os.chmod(to_file_path, 0664)
+                if filename_ext(from_file_path).lower().find('.h') or filename_ext(from_file_path).lower().find('.cpp'):
+                    os.chmod(to_file_path, 0664)
 
-            to_file = open(to_file_path, 'wb')
-            to_file.write(from_file_content.decode(from_file_encoding).encode('utf-8'))
-            to_file.close()
+        to_file = open(to_file_path, 'wb')
 
-            print('=== convert %s(%s) to %s(utf8) done ===' % (from_file_path, from_file_encoding, to_file_path))
+        if 0 == from_file_encoding.lower().find('utf-8'):
+            fcontent = from_file_content
+        else:
+            fcontent = from_file_content.decode(from_file_encoding).encode('utf-8')
+
+        if add_bom and fcontent[:3] != codecs.BOM_UTF8:
+            new_fcontent = codecs.BOM_UTF8
+            new_fcontent += fcontent
+        else:
+            new_fcontent = fcontent
+
+        to_file.write(new_fcontent)
+        to_file.close()
+
+        print('=== convert %s(%s) to %s(utf8) done ===' % (from_file_path, from_file_encoding, to_file_path))
 
         return 0
     except Exception as e:
