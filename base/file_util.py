@@ -188,9 +188,6 @@ def convert_to_utf8(from_file_path, to_file_path, add_bom=False):
         elif -1 == from_file_encoding.lower().find('utf-8'):
             if not os.path.exists(to_file_path):
                 create_file(to_file_path)
-            else:
-                if filename_ext(from_file_path).lower().find('.h') or filename_ext(from_file_path).lower().find('.cpp'):
-                    os.chmod(to_file_path, 0664)
 
         to_file = open(to_file_path, 'wb')
 
@@ -248,8 +245,12 @@ def demo004():
     assert 0 == convert_to_utf8(utf8_file, None)
 
 
+def demo005():
+    convert_to_utf8("/home/sunlands/workspace/rtmp_pusher/main.cpp", "/home/sunlands/workspace/rtmp_pusher/main.cpp", True)
+
+
 if __name__ == '__main__':
-    demo001()
+    demo005()
     # demo002()
     # demo003()
     # demo004()
