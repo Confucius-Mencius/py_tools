@@ -15,8 +15,8 @@ import xls_head
 
 
 def output_content(fp, xls_head_, xls_row_grid, xls_col_grid, indent):
-    content = '''#ifndef XX_CONF_XPATH_DEFINE_H_
-#define XX_CONF_XPATH_DEFINE_H_
+    content = '''#ifndef XX_CONF_XPATH_H_
+#define XX_CONF_XPATH_H_
 
 namespace xx
 {
@@ -32,13 +32,13 @@ namespace xx
 
     content = '''}
     
-#endif // XX_CONF_XPATH_DEFINE_H_
+#endif // XX_CONF_XPATH_H_
 '''
     fp.write(content.encode('utf-8'))
 
 
-def generate_conf_xpath_define_file(xls_head_, xls_row_grid, xls_col_grid, output_dir):
-    file_path = os.path.join(output_dir, 'xx_conf_xpath_define.h')
+def generate_conf_xpath_file(xls_head_, xls_row_grid, xls_col_grid, output_dir):
+    file_path = os.path.join(output_dir, 'xx_conf_xpath.h')
     file_util.del_file(file_path)
     file_util.make_dir(output_dir)
 
@@ -60,8 +60,7 @@ def test_001():
     xls_head_ = xls_head.XlsHead()
     xls_loader = xls_util.XlsLoader('./app_frame_conf.csv', xls_head_.nrows, xls_head_.ncols, xls_head_.col_types)
     assert 0 == xls_loader.load()
-    assert 0 == generate_conf_xpath_define_file(xls_head_, xls_loader.row_grid, xls_loader.col_grid,
-                                                './output/app_frame')
+    assert 0 == generate_conf_xpath_file(xls_head_, xls_loader.row_grid, xls_loader.col_grid, './output/app_frame')
 
 
 if __name__ == "__main__":

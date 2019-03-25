@@ -18,7 +18,7 @@ import xls_head
 import conf_mgr_cpp_file_generator
 import conf_mgr_h_file_generator
 import conf_mgr_interface_file_generator
-import conf_xpath_define_file_generator
+import conf_xpath_file_generator
 
 
 def do(csv_file_path, output_dir):
@@ -65,7 +65,7 @@ def do(csv_file_path, output_dir):
     generator_list = [conf_mgr_cpp_file_generator.generate_conf_mgr_cpp_file,
                       conf_mgr_h_file_generator.generate_conf_mgr_h_file,
                       conf_mgr_interface_file_generator.generate_conf_mgr_interface_file,
-                      conf_xpath_define_file_generator.generate_conf_xpath_define_file]
+                      conf_xpath_file_generator.generate_conf_xpath_file]
 
     for generator in generator_list:
         if generator(xls_head_, xls_loader.row_grid, xls_loader.col_grid, output_dir) != 0:
