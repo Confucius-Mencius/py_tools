@@ -16,9 +16,11 @@ import one_file_msg_mgr
 
 def output_content(fp, msg_list_group, base_idx, gap, pkg_name):
     try:
-        content = ['package %s;' % pkg_name, os.linesep,
+        content = ['syntax = "proto3";', os.linesep,
+                   'package %s;' % pkg_name, os.linesep,
                    os.linesep,
-                   'enum MsgID {', os.linesep]
+                   'enum MsgID {', os.linesep,
+                   '    PLACE_HOLDER = 0;', os.linesep]
         fp.write(''.join(content).encode('utf-8'))
 
         group_base_idx = base_idx
@@ -49,8 +51,9 @@ def output_content(fp, msg_list_group, base_idx, gap, pkg_name):
         return -1
 
 
-def generate_msg_id_proto_file(msg_list_group, output_dir, base_idx, gap, pkg_name, namespace_list):
-    file_path = os.path.join(output_dir, 'msg_id.proto')
+def generate_msg_id_proto_file(msg_proto_file, msg_list_group, output_dir, base_idx, gap, pkg_name, namespace_list):
+    file_name = file_util.base_filename(msg_proto_file)
+    file_path = os.path.join(output_dir, file_name[:len(file_name) - len('_msg')] + '_msg_id.proto')
     file_util.del_file(file_path)
     file_util.make_dir(output_dir)
 
@@ -70,12 +73,14 @@ def test_001():
     msg_list_group = []
     one_file_msg_mgr_ = one_file_msg_mgr.OneFileMsgMgr()
 
-    if one_file_msg_mgr_.read_msg('./demo_msg.proto') != 0:
+    msg_proto_file = 'demo_msg.proto'
+    if one_file_msg_mgr_.read_msg(msg_proto_file) != 0:
         return -1
 
     msg_list_group.append(one_file_msg_mgr_.msg_list)
 
-    if generate_msg_id_proto_file(msg_list_group, './output/demo', 1000, 50, 'com.moon.demo.proto', None) != 0:
+    if generate_msg_id_proto_file(msg_proto_file, msg_list_group, './output/demo', 1000, 50,
+                                  'com.moon.demo.proto', None) != 0:
         return -1
 
     return 0

@@ -1,0 +1,26 @@
+syntax = "proto3";
+package com.moon.demo.proto.ss;
+
+import "common.proto";
+
+message GlobalReq {
+    int32 a = 1;
+    int32 b = 2;
+}
+
+message GlobalRsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo1Req {
+    int32 a = 1;
+    bool udp = 2;
+}
+
+message Demo1Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo1Nfy {
+    int32 a = 1;
+}

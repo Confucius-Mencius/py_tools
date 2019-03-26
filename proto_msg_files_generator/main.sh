@@ -6,17 +6,11 @@
 
 SCRIPT_PATH=$(cd `dirname $0`; pwd)
 
-# PROTO_LIST=(demo,galileo galileo) # 如果一个项目中有多个proto文件，用逗号分隔。
-# OUTPUT_DIR_LIST=(demo galileo)
-# BASE_IDX_LIST=(1000 1000)
-# GAP_LIST=(50 50)
-# NAMESPACE_LIST=com.moon.demo.proto com.moon.galileo.proto)
-
-PROTO_LIST=(demo)
-OUTPUT_DIR_LIST=(demo)
-BASE_IDX_LIST=(1000)
-GAP_LIST=(50)
-NAMESPACE_LIST=(com.moon.demo.proto)
+PROTO_LIST=(cs ss) # 如果cs协议有多个proto文件，用逗号分隔，例如：cs1,cs2。
+OUTPUT_DIR_LIST=(demo demo)
+BASE_IDX_LIST=(1000 2000)
+GAP_LIST=(50 50)
+NAMESPACE_LIST=(com.moon.demo.proto.cs com.moon.demo.proto.ss)
 
 for i in "${!PROTO_LIST[@]}"; do
     PROTOS=${PROTO_LIST[$i]}
@@ -42,5 +36,5 @@ for i in "${!PROTO_LIST[@]}"; do
     fi
 
     echo ${MSG_PROTO_FILE_LIST}
-    python ${SCRIPT_PATH}/main.py ${MSG_PROTO_FILE_LIST} ${OUTPUT_DIR} ${BASE_IDX} ${GAP} ${NAMESPACE} tcp,http,udp
+    python ${SCRIPT_PATH}/main.py ${MSG_PROTO_FILE_LIST} ${OUTPUT_DIR} ${BASE_IDX} ${GAP} ${NAMESPACE} tcp # 有多个namespace用逗号分隔
 done

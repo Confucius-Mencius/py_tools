@@ -178,7 +178,7 @@ def output_file(msg, output_dir, pkg_name, namespace_list):
     return 0
 
 
-def generate_test_action_file(msg_list_group, output_dir, base_idx, gap, pkg_name, namespace_list):
+def generate_test_action_file(msg_proto_file, msg_list_group, output_dir, base_idx, gap, pkg_name, namespace_list):
     for msg_list in msg_list_group:
         if not msg_list or 0 == len(msg_list):
             continue
@@ -194,12 +194,13 @@ def test_001():
     msg_list_group = []
     msg_mgr_ = one_file_msg_mgr.OneFileMsgMgr()
 
-    if msg_mgr_.read_msg('./demo_msg.proto') != 0:
+    msg_proto_file = 'demo_msg.proto'
+    if msg_mgr_.read_msg(msg_proto_file) != 0:
         return -1
 
     msg_list_group.append(msg_mgr_.msg_list)
 
-    if generate_test_action_file(msg_list_group, './output/demo', None, None, 'com::moon::demo::proto',
+    if generate_test_action_file(msg_proto_file, msg_list_group, './output/demo', None, None, 'com::moon::demo::proto',
                                  ['tcp', 'udp']) != 0:
         return -1
 

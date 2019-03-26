@@ -16,7 +16,6 @@ import cpp_msg_handler_files_generator
 import test_action_files_generator
 import test_case_files_generator
 import csharp_msg_handler_file_generator
-
 import one_file_msg_mgr
 
 
@@ -38,14 +37,14 @@ def do(msg_proto_file_list, output_dir, base_idx, gap, pkg_name, namespace_list)
                       csharp_msg_handler_file_generator.generate_csharp_msg_handler_file]
 
     for generator in generator_list:
-        if generator(msg_list_group, output_dir, base_idx, gap, pkg_name, namespace_list) != 0:
+        if generator(msg_proto_file, msg_list_group, output_dir, base_idx, gap, pkg_name, namespace_list) != 0:
             return -1
 
     return 0
 
 
 def test_001():
-    if do(['./demo_msg.proto'], './output/demo', 1000, 50, 'com.moon.demo.proto', ['tcp', 'http', 'udp']) != 0:
+    if do(['./demo_msg.proto'], './output/demo', 1000, 50, 'com.moon.demo.proto', ['tcp']) != 0:
         return -1
 
     return 0
