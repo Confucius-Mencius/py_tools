@@ -1,5 +1,5 @@
 syntax = "proto3";
-package com.moon.demo.proto.cs;
+package com.moon.demo.cs;
 
 import "common.proto";
 

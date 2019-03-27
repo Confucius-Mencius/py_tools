@@ -10,7 +10,7 @@ PROTO_LIST=(cs ss) # 如果cs协议有多个proto文件，用逗号分隔，例�
 OUTPUT_DIR_LIST=(demo demo)
 BASE_IDX_LIST=(1000 2000)
 GAP_LIST=(50 50)
-NAMESPACE_LIST=(com.moon.demo.proto.cs com.moon.demo.proto.ss)
+NAMESPACE_LIST=(com.moon.demo.cs com.moon.demo.ss)
 
 for i in "${!PROTO_LIST[@]}"; do
     PROTOS=${PROTO_LIST[$i]}

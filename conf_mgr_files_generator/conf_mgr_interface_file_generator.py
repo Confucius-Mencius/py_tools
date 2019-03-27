@@ -113,7 +113,7 @@ def generate_conf_mgr_interface_file(xls_head_, xls_row_grid, xls_col_grid, outp
 
         fp.close()
 
-        file_util.replace_content(file_path, ["Tcp TCP", "Io IO", "Cpu CPU", "Udp UDP", "Http HTTP", "Tq TQ", "Ws WS", "Wss WSS", "WSs WSS"])
+        file_util.replace_content(file_path, ["Tcp TCP", "Io IO", "Cpu CPU", "Udp UDP", "Http HTTP", "Tq TQ", "Ws WS", "Wss WSS", "WSs WSS", "Zk ZK"])
         print('=== generate %s done ===' % file_path)
 
         return 0

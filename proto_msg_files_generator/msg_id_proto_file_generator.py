@@ -80,7 +80,7 @@ def test_001():
     msg_list_group.append(one_file_msg_mgr_.msg_list)
 
     if generate_msg_id_proto_file(msg_proto_file, msg_list_group, './output/demo', 1000, 50,
-                                  'com.moon.demo.proto', None) != 0:
+                                  'com.moon.demo', None) != 0:
         return -1
 
     return 0

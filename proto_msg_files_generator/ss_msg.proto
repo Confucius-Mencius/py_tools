@@ -1,5 +1,5 @@
 syntax = "proto3";
-package com.moon.demo.proto.ss;
+package com.moon.demo.ss;
 
 import "common.proto";
 

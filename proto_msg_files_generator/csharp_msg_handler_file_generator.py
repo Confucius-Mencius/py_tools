@@ -103,7 +103,7 @@ def test_001():
     msg_list_group.append(msg_mgr_.msg_list)
 
     if generate_csharp_msg_handler_file(msg_proto_file, msg_list_group, './output/demo', None, None,
-                                        'com::moon::demo::proto::cs', None) != 0:
+                                        'com::moon::demo', None) != 0:
         return -1
 
     return 0

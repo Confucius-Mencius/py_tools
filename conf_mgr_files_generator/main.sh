@@ -6,7 +6,7 @@
 
 SCRIPT_PATH=$(cd `dirname $0`; pwd)
 
-ITEM_LIST=(app_launcher app_frame demo_server)
+ITEM_LIST=(app_frame demo_server)
 
 for i in ${ITEM_LIST[@]}; do
     CSV_FILE_PATH=${SCRIPT_PATH}/${i}_conf.csv

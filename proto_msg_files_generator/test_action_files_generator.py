@@ -200,7 +200,7 @@ def test_001():
 
     msg_list_group.append(msg_mgr_.msg_list)
 
-    if generate_test_action_file(msg_proto_file, msg_list_group, './output/demo', None, None, 'com::moon::demo::proto',
+    if generate_test_action_file(msg_proto_file, msg_list_group, './output/demo', None, None, 'com::moon::demo',
                                  ['tcp', 'udp']) != 0:
         return -1
 
