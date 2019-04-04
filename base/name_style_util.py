@@ -15,7 +15,10 @@ def camel_to_underline(camel_name):
     underline_name = ''
 
     for ch in camel_name:
-        underline_name += ch if ch.islower() else '_' + ch.lower()
+        if ch.isdigit():
+            underline_name += ch
+        else:
+            underline_name += ch if ch.islower() else '_' + ch.lower()
 
     if '_' == underline_name[0]:
         return underline_name[1:]
@@ -41,9 +44,11 @@ def underline_to_camel(underline_name):
 
 
 def demo001():
+    assert 'demo100_req' == camel_to_underline('Demo100Req')
     assert 'hello_world' == camel_to_underline('HelloWorld')
     assert 'hello_world' == camel_to_underline('helloWorld')
     assert 'HelloWorld' == underline_to_camel('hello_world')
+    assert 'Demo100Req' == underline_to_camel('demo100_req')
 
 
 if __name__ == '__main__':

@@ -3,24 +3,136 @@ package com.moon.demo.ss;
 
 import "common.proto";
 
-message GlobalReq {
-    int32 a = 1;
-    int32 b = 2;
-}
-
-message GlobalRsp {
-    ErrCtx err_ctx = 1;
-}
-
-message Demo1Req {
+message Demo2Req {
     int32 a = 1;
     bool udp = 2;
 }
 
-message Demo1Rsp {
+message Demo2Rsp {
     ErrCtx err_ctx = 1;
 }
 
-message Demo1Nfy {
+message Demo3Req {
+    int32 a = 1;
+    bool udp = 2;
+}
+
+message Demo3Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+enum Demo4Flag {
+    option allow_alias = true;
+    DEMO_4_FLAG_MIN = 0;
+    DEMO_4_FLAG_IO_TO_WORK = 0;
+    DEMO_4_FLAG_WORK_TO_WORK = 1;
+    DEMO_4_FLAG_WORK_TO_BURDEN = 2;
+    DEMO_4_FLAG_BURDEN_TO_BURDEN = 3;
+    DEMO_4_FLAG_MAX = 4;
+}
+
+message Demo4Req {
+    int32 a = 1;
+    int64 b = 2;
+    string c = 3;
+    bytes d = 4; // post body
+    Demo4Flag flag = 5;
+}
+
+message Demo4Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo5Req {
+    int32 a = 1;
+    bool udp = 2;
+}
+
+message Demo5Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo6Req {
+    int32 a = 1;
+    bool udp = 2;
+}
+
+message Demo6Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+
+message Demo7Req {
+    int32 a = 1;
+    bool udp = 2;
+}
+
+message Demo7Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo8Req {
+    int32 a = 1;
+    bool udp = 2;
+}
+
+message Demo8Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo9Req {
+    int32 a = 1;
+    bool udp = 2;
+}
+
+message Demo9Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo10Req {
+    int32 a = 1;
+    bool udp = 2;
+}
+
+message Demo10Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo20Req {
+    int32 a = 1;
+    bool udp = 2;
+}
+
+message Demo20Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo50Req {
+    int32 a = 1;
+    bool udp = 2;
+}
+
+message Demo50Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo90Req {
+    int32 a = 1;
+    bool udp = 2;
+}
+
+message Demo90Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo2Nfy {
+    int32 a = 1;
+}
+
+message Demo4Nfy {
+    int32 a = 1;
+}
+
+message Demo5Nfy {
     int32 a = 1;
 }

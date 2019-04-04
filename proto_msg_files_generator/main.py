@@ -44,7 +44,7 @@ def do(msg_proto_file_list, output_dir, base_idx, gap, pkg_name, namespace_list)
 
 
 def test_001():
-    if do(['./demo_msg.proto'], './output/demo', 1000, 50, 'com.moon.demo.proto', ['tcp']) != 0:
+    if do(['./demo_msg.proto'], './output/demo', 1000, 50, 'com.moon.demo.proto', ['proto_tcp']) != 0:
         return -1
 
     return 0

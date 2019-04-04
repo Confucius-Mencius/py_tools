@@ -16,6 +16,10 @@ import one_file_msg_mgr
 
 def output_header_file_content(fp, msg, namespace):
     try:
+        if 'proto_tcp' == namespace:
+            namespace_begin = 'namespace tcp%s{%snamespace proto%s{' % (os.linesep, os.linesep, os.linesep)
+            namespace_end = '}%s}' % os.linesep
+
         guard = 'DEMO_SERVER_%s_LOGICS_%s_HANDLER_H_' % (namespace.upper(),
                                                          name_style_util.camel_to_underline(msg).upper())
         class_name = '%sHandler' % msg
@@ -23,20 +27,21 @@ def output_header_file_content(fp, msg, namespace):
         content = ['#ifndef %s' % guard, os.linesep,
                    '#define %s' % guard, os.linesep * 2,
                    '#include "msg_handler.h"', os.linesep * 2,
-                   'namespace %s' % namespace, os.linesep, '{', os.linesep,
+                   '%s' % namespace_begin, os.linesep,
                    'class %s : public MsgHandler' % class_name, os.linesep,
                    '{', os.linesep, 'public:', os.linesep,
                    '    %sHandler();' % msg, os.linesep,
                    '    virtual ~%sHandler();' % msg, os.linesep * 2]
         fp.write(''.join(content).encode('utf-8'))
 
-        if namespace == 'tcp' or namespace == 'udp':
+        if namespace == 'proto_tcp':
             content = '''    ///////////////////////// MsgHandlerInterface /////////////////////////
-    MsgId GetMsgId() override;
-    void OnMsg(const ConnGuid* conn_guid, const MsgHead& msg_head, const void* msg_body, size_t msg_body_len) override;
+    ::proto::MsgID GetMsgID() override;
+    void OnMsg(const ConnGUID* conn_guid, const ::proto::MsgHead& msg_head,
+               const void* msg_body, size_t msg_body_len) override;
 
 private:
-    void SendErrRsp(const ConnGuid* conn_guid, const MsgHead& msg_head, int err_code) const;'''
+    void SendErrRsp(const ConnGUID* conn_guid, const ::proto::MsgHead& req_msg_head, int err_code) const;'''
             fp.write(content.encode('utf-8'))
         elif namespace == 'http':
             content = '''    ///////////////////////// http::MsgHandlerInterface /////////////////////////
@@ -55,7 +60,7 @@ private:
         else:
             return -1
 
-        content = [os.linesep, '};', os.linesep, '}', os.linesep * 2,
+        content = [os.linesep, '};', os.linesep, namespace_end, os.linesep * 2,
                    '#endif // %s' % guard, os.linesep]
         fp.write(''.join(content).encode('utf-8'))
 
@@ -87,18 +92,20 @@ def output_header_file(msg, output_dir, namespace_list):
 
 def output_cpp_file_content(fp, msg, pkg_name, namespace):
     try:
+        if 'proto_tcp' == namespace:
+            namespace_begin = 'namespace tcp%s{%snamespace proto%s{' % (os.linesep, os.linesep, os.linesep)
+            namespace_end = '}%s}' % os.linesep
+
         class_name = '%sHandler' % msg
-        namespace_prefix = 'proto'
 
         content = ['#include "%s_handler.h"' % name_style_util.camel_to_underline(msg).lower(),
                    '''
 #include "cs_msg.pb.h"
 #include "cs_msg_id.pb.h"
-#include "err_code.h"
-#include "log_util.h"''', os.linesep,
-                   '#include "%s_protobuf_msg_util.h"' % namespace, os.linesep * 2,
+#include "err_code.h"''', os.linesep,
+                   '#include "%s_protobuf_util.h"' % namespace, os.linesep * 2,
                    'using namespace %s;' % pkg_name, os.linesep * 2,
-                   'namespace %s' % namespace, os.linesep, '{', os.linesep,
+                   '%s' % namespace_begin, os.linesep,
                    '%s::%s()' % (class_name, class_name), os.linesep, '{', os.linesep, '}', os.linesep * 2,
                    '%s::~%s()' % (class_name, class_name), os.linesep, '{', os.linesep, '}', os.linesep * 2]
 
@@ -110,17 +117,18 @@ def output_cpp_file_content(fp, msg, pkg_name, namespace):
 
         fp.write(''.join(content).encode('utf-8'))
 
-        if namespace == 'tcp' or namespace == 'udp':
+        if namespace == 'proto_tcp':
             req_msg_name = name_style_util.camel_to_underline(msg).lower()
             rsp_msg_name = name_style_util.camel_to_underline(msg).lower().replace('req', 'rsp')
 
-            content = ['MsgId %s::GetMsgId()' % class_name, os.linesep, '{', os.linesep,
-                       '    return %s::cs::MSG_ID_%s;' % (namespace_prefix, req_msg_name.upper()), os.linesep,
+            content = ['::proto::MsgID %s::GetMsgID()' % class_name, os.linesep, '{', os.linesep,
+                       '    return cs::MSG_ID_%s;' % (req_msg_name.upper()), os.linesep,
                        '}', os.linesep * 2,
-                       'void %s::OnMsg(const ConnGuid* conn_guid, const MsgHead& msg_head, const void* msg_body, size_t msg_body_len)' % class_name,
+                       'void %s::OnMsg(const ConnGUID* conn_guid, const ::proto::MsgHead& msg_head, const void* msg_body, size_t msg_body_len)' % class_name,
                        os.linesep,
                        '{', os.linesep,
-                       '    proto::cs::%s %s;' % (msg, req_msg_name), os.linesep * 2,
+                       '    LOG_TRACE("%s::OnMsg");' % class_name, os.linesep * 2,
+                       '    cs::%s %s;' % (msg, req_msg_name), os.linesep,
                        '    if (ParseProtobufMsg(&%s, msg_body, msg_body_len) != 0)' % req_msg_name, os.linesep,
                        '    {', os.linesep,
                        '        LOG_ERROR("failed to parse msg, msg id: " << msg_head.msg_id << ", msg body len: " << msg_body_len);',
@@ -128,12 +136,12 @@ def output_cpp_file_content(fp, msg, pkg_name, namespace):
                        '        SendErrRsp(conn_guid, msg_head, ERR_INVALID_PARAM);', os.linesep,
                        '        return;', os.linesep,
                        '    }', os.linesep * 2,
-                       '    // ...', os.linesep * 2,
+                       '    // TODO', os.linesep * 2,
                        '    ////////////////////////////////////////////////////////////////////////////////',
                        os.linesep,
-                       '    MsgHead rsp_msg_head = msg_head;', os.linesep,
-                       '    rsp_msg_head.msg_id = proto::cs::MSG_ID_%s;' % rsp_msg_name.upper(), os.linesep * 2,
-                       '    proto::cs::%s %s;' % (msg.replace('Req', 'Rsp'), rsp_msg_name), os.linesep,
+                       '    ::proto::MsgHead rsp_msg_head = msg_head;', os.linesep,
+                       '    rsp_msg_head.msg_id = cs::MSG_ID_%s;' % rsp_msg_name.upper(), os.linesep * 2,
+                       '    cs::%s %s;' % (msg.replace('Req', 'Rsp'), rsp_msg_name), os.linesep,
                        '    %s.mutable_err_ctx()->set_err_code(ERR_OK);' % rsp_msg_name, os.linesep * 2,
                        '    if (SendToClient(logic_ctx_->scheduler, conn_guid, rsp_msg_head, &%s) != 0)' % rsp_msg_name,
                        os.linesep,
@@ -141,14 +149,13 @@ def output_cpp_file_content(fp, msg, pkg_name, namespace):
                        '        LOG_ERROR("failed to send to " << conn_guid << ", msg id: " << rsp_msg_head.msg_id);',
                        os.linesep,
                        '        return;', os.linesep,
-                       '    }', os.linesep * 2,
-                       '    // ...', os.linesep * 2,
+                       '    }', os.linesep,
                        '}', os.linesep * 2,
-                       'void %sHandler::SendErrRsp(const ConnGuid* conn_guid, const MsgHead& msg_head, int err_code) const' % msg,
+                       'void %sHandler::SendErrRsp(const ConnGUID* conn_guid, const ::proto::MsgHead& req_msg_head, int err_code) const' % msg,
                        os.linesep, '{', os.linesep,
-                       '    MsgHead rsp_msg_head = msg_head;', os.linesep,
-                       '    rsp_msg_head.msg_id = proto::cs::MSG_ID_%s;' % rsp_msg_name.upper(), os.linesep * 2,
-                       '    proto::cs::%s %s;' % (msg.replace('Req', 'Rsp'), rsp_msg_name), os.linesep,
+                       '    ::proto::MsgHead rsp_msg_head = req_msg_head;', os.linesep,
+                       '    rsp_msg_head.msg_id = cs::MSG_ID_%s;' % rsp_msg_name.upper(), os.linesep * 2,
+                       '    cs::%s %s;' % (msg.replace('Req', 'Rsp'), rsp_msg_name), os.linesep,
                        '    %s.mutable_err_ctx()->set_err_code(err_code);' % rsp_msg_name, os.linesep * 2,
                        '    SendToClient(logic_ctx_->scheduler, conn_guid, rsp_msg_head, &%s);' % rsp_msg_name,
                        os.linesep,
@@ -170,7 +177,7 @@ def output_cpp_file_content(fp, msg, pkg_name, namespace):
         else:
             return -1
 
-        content = ['}', os.linesep]
+        content = [namespace_end, os.linesep]
         fp.write(''.join(content).encode('utf-8'))
 
         return 0
@@ -234,7 +241,7 @@ def test_001():
     msg_list_group.append(msg_mgr_.msg_list)
 
     if generate_cpp_msg_handler_file(msg_proto_file, msg_list_group, './output/demo', None, None,
-                                     'com::moon::demo', ['tcp', 'http', 'udp']) != 0:
+                                     'com::moon::demo', ['proto_tcp', 'http']) != 0:
         return -1
 
     return 0

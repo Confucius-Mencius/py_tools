@@ -28,18 +28,15 @@ import sys
 sys.path.append('%s/../../../../py_tools' % os.path.split(os.path.realpath(__file__))[0])
 # print(sys.path)
 
-from base.msg_codec import *
-
-
-from util.log_util import *
+from util.proto_msg_codec import *
 import conf
 from data.err_code import *
 
 '''
         fp.write(content.encode('utf-8'))
 
-        content = ['from %s.cs import cs_msg_id_pb2' % pkg_name.replace('::', '.'), os.linesep,
-                   'from %s.cs import cs_msg_pb2' % pkg_name.replace('::', '.'), os.linesep * 3]
+        content = ['from %s import cs_msg_id_pb2' % pkg_name.replace('::', '.'), os.linesep,
+                   'from %s import cs_msg_pb2' % pkg_name.replace('::', '.'), os.linesep * 3]
         fp.write(''.join(content).encode('utf-8'))
 
         content = ['class %s(object):' % msg, os.linesep,
@@ -77,13 +74,9 @@ from data.err_code import *
                        '        %s = self.__make_%s()' % (req_instance, req_instance), os.linesep * 2]
             fp.write(''.join(content).encode('utf-8'))
 
-            if 'tcp' == namespace:
+            if 'proto_tcp' == namespace:
                 content = [
-                    '        ret = self.client.send(msg_head, %s.SerializeToString(), %s.ByteSize(), conf.do_checksum)'
-                    % (req_instance, req_instance), os.linesep]
-            elif 'udp' == namespace:
-                content = [
-                    '        ret = self.client.send(msg_head, %s.SerializeToString(), %s.ByteSize(), conf.do_checksum)'
+                    '        ret = self.client.send(msg_head, %s.SerializeToString(), %s.ByteSize(), conf.proto_tcp_do_checksum)'
                     % (req_instance, req_instance), os.linesep]
             fp.write(''.join(content).encode('utf-8'))
 
@@ -92,13 +85,9 @@ from data.err_code import *
                        '            return -1', os.linesep * 2]
             fp.write(''.join(content).encode('utf-8'))
 
-            if 'tcp' == namespace:
+            if 'proto_tcp' == namespace:
                 content = ['        rsp_msg_head = MsgHead()', os.linesep * 2,
-                           '        ret, rsp_msg_head, rsp_msg_body = self.client.recv(conf.do_checksum)', os.linesep]
-            elif 'udp' == namespace:
-                content = [
-                    '        ret, rsp_msg_head, rsp_msg_body = self.client.recv(conf.max_udp_msg_len, conf.do_checksum)',
-                    os.linesep]
+                           '        ret, rsp_msg_head, rsp_msg_body = self.client.recv(conf.proto_tcp_do_checksum)', os.linesep]
             fp.write(''.join(content).encode('utf-8'))
 
             content = ['        if ret != 0:', os.linesep,
@@ -128,13 +117,9 @@ from data.err_code import *
                        '        LOG_DEBUG(\'----- %s -----\')' % nfy_instance, os.linesep * 2]
             fp.write(''.join(content).encode('utf-8'))
 
-            if 'tcp' == namespace:
+            if 'proto_tcp' == namespace:
                 content = ['        nfy_msg_head = MsgHead()', os.linesep * 2,
-                           '        ret, nfy_msg_head, nfy_msg_body = self.client.recv(conf.do_checksum)', os.linesep]
-            elif 'udp' == namespace:
-                content = [
-                    '        ret, nfy_msg_head, nfy_msg_body = self.client.recv(conf.max_udp_msg_len, conf.do_checksum)',
-                    os.linesep]
+                           '        ret, nfy_msg_head, nfy_msg_body = self.client.recv(conf.proto_tcp_do_checksum)', os.linesep]
             fp.write(''.join(content).encode('utf-8'))
 
             content = ['        if ret != 0:', os.linesep,
@@ -201,7 +186,7 @@ def test_001():
     msg_list_group.append(msg_mgr_.msg_list)
 
     if generate_test_action_file(msg_proto_file, msg_list_group, './output/demo', None, None, 'com::moon::demo',
-                                 ['tcp', 'udp']) != 0:
+                                 ['proto_tcp']) != 0:
         return -1
 
     return 0

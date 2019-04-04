@@ -31,7 +31,7 @@ sys.path.append('%s/../../../../py_tools' % os.path.split(os.path.realpath(__fil
 '''
         fp.write(content.encode('utf-8'))
 
-        content = ['from base.%s_client import *' % namespace, os.linesep * 2,
+        content = ['from util.%s_client import *' % namespace, os.linesep * 2,
                    'from test_action.%s.%s import *' % (
                        namespace, name_style_util.camel_to_underline(msg).lower()),
                    os.linesep * 3]
@@ -40,8 +40,7 @@ sys.path.append('%s/../../../../py_tools' % os.path.split(os.path.realpath(__fil
         action_name = name_style_util.camel_to_underline(msg).lower()
 
         content = ['def test_001():', os.linesep,
-                   '    client = %sClient(conf.demo_server_addr, conf.demo_server_%s_port)' % (
-                       namespace.capitalize(), namespace), os.linesep,
+                   '    client = Client(conf.demo_server_addr, conf.demo_server_%s_port)' % namespace, os.linesep,
                    '    %s = %s(client)' % (action_name, msg), os.linesep,
                    '    ret = %s.%s()' % (action_name, action_name[:-4]), os.linesep,
                    '    assert ret == 0', os.linesep * 3]
@@ -104,7 +103,7 @@ def test_001():
     msg_list_group.append(msg_mgr_.msg_list)
 
     if generate_test_case_file(msg_proto_file, msg_list_group, './output/demo', None, None, 'com::moon::demo',
-                               ['tcp', 'http', 'udp']) != 0:
+                               ['proto_tcp', 'http']) != 0:
         return -1
 
     return 0

@@ -36,5 +36,5 @@ for i in "${!PROTO_LIST[@]}"; do
     fi
 
     echo ${MSG_PROTO_FILE_LIST}
-    python ${SCRIPT_PATH}/main.py ${MSG_PROTO_FILE_LIST} ${OUTPUT_DIR} ${BASE_IDX} ${GAP} ${NAMESPACE} tcp # 有多个namespace用逗号分隔
+    python ${SCRIPT_PATH}/main.py ${MSG_PROTO_FILE_LIST} ${OUTPUT_DIR} ${BASE_IDX} ${GAP} ${NAMESPACE} proto_tcp # 有多个namespace用逗号分隔
 done
