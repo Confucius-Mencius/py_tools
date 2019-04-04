@@ -31,7 +31,7 @@ sys.path.append('%s/../../../../py_tools' % os.path.split(os.path.realpath(__fil
 '''
         fp.write(content.encode('utf-8'))
 
-        content = ['from util.%s_client import *' % namespace, os.linesep * 2,
+        content = ['from util.%s_client import *' % namespace, os.linesep,
                    'from test_action.%s.%s import *' % (
                        namespace, name_style_util.camel_to_underline(msg).lower()),
                    os.linesep * 3]
