@@ -146,7 +146,7 @@ def output_cpp_file_content(fp, msg, pkg_name, namespace):
                        '    if (SendToClient(logic_ctx_->scheduler, conn_guid, rsp_msg_head, &%s) != 0)' % rsp_msg_name,
                        os.linesep,
                        '    {', os.linesep,
-                       '        LOG_ERROR("failed to send to " << conn_guid << ", msg id: " << rsp_msg_head.msg_id);',
+                       '        LOG_ERROR("failed to send to client, " << conn_guid << ", msg id: " << rsp_msg_head.msg_id);',
                        os.linesep,
                        '        return;', os.linesep,
                        '    }', os.linesep,
