@@ -5,7 +5,6 @@ import "common.proto";
 
 message Demo1Req {
     int32 a = 1;
-    bool udp = 2;
 }
 
 message Demo1Rsp {
@@ -22,9 +21,16 @@ message Demo3Nfy {
 
 message Demo100Req {
     int32 a = 1;
-    bool udp = 2;
 }
 
 message Demo100Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo200Req {
+    int32 a = 1;
+}
+
+message Demo200Rsp {
     ErrCtx err_ctx = 1;
 }

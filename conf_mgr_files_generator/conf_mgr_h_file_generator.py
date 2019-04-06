@@ -170,10 +170,10 @@ def output_load_function(fp, xls_head_, xls_row, indent):
                       'string': '%sconf_center_->ReleaseConf(&%s);%s' % (indent * 3, name, os.linesep)}
     table_string_3 = {'int': '', 'int64': '', 'float': '', 'double': '', 'bool': '',
                       'string': '%s%s_ = %s;%s%sconf_center_->ReleaseConf(&%s);%s' % (
-                      indent * 2, name, name, os.linesep, indent * 2, name, os.linesep)}
+                          indent * 2, name, name, os.linesep, indent * 2, name, os.linesep)}
     table_string_4 = {'int': '', 'int64': '', 'float': '', 'double': '', 'bool': '',
                       'string': '%sif (strlen(%s[i]) > 0)%s%s{%s' % (
-                      indent * 3, name, os.linesep, indent * 3, os.linesep)}
+                          indent * 3, name, os.linesep, indent * 3, os.linesep)}
 
     if not xls_row.get_cell(xls_head_.conf['with_default']['col']).content:
         with_default_str = 'false'
@@ -226,10 +226,10 @@ def output_load_functions(fp, xls_head_, xls_row_grid, xls_col_grid, indent):
 
         if xls_row.get_cell(xls_head_.conf['group']['col']).content:
             content = '%sint Load%sGroup()%s%s{%s' % (
-            indent, name_style_util.underline_to_camel(name), os.linesep, indent, os.linesep)
+                indent, name_style_util.underline_to_camel(name), os.linesep, indent, os.linesep)
         else:
             content = '%sint Load%s()%s%s{%s' % (
-            indent, name_style_util.underline_to_camel(name), os.linesep, indent, os.linesep)
+                indent, name_style_util.underline_to_camel(name), os.linesep, indent, os.linesep)
 
         fp.write(content.encode('utf-8'))
 
@@ -382,7 +382,9 @@ public:
 
         fp.close()
 
-        file_util.replace_content(file_path, ["Tcp TCP", "Io IO", "Cpu CPU", "Udp UDP", "Http HTTP", "Tq TQ", "Ws WS", "Wss WSS", "WSs WSS", "Zk ZK"])
+        file_util.replace_content(file_path,
+                                  ["Tcp TCP", "Io IO", "Cpu CPU", "Udp UDP", "Http HTTP", "Tq TQ", "Ws WS", "Wss WSS",
+                                   "WSs WSS", "Zk ZK"])
         print('=== generate %s done ===' % file_path)
 
         return 0

@@ -80,7 +80,8 @@ def output_file(msg, output_dir, pkg_name):
     return 0
 
 
-def generate_csharp_msg_handler_file(msg_proto_file, msg_list_group, output_dir, base_idx, gap, pkg_name, namespace_list):
+def generate_csharp_msg_handler_file(msg_proto_file, msg_list_group, output_dir, base_idx, gap, pkg_name,
+                                     namespace_list):
     for msg_list in msg_list_group:
         if not msg_list or 0 == len(msg_list):
             continue

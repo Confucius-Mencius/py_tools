@@ -246,7 +246,8 @@ def demo004():
 
 
 def demo005():
-    convert_to_utf8("/home/sunlands/workspace/rtmp_pusher/main.cpp", "/home/sunlands/workspace/rtmp_pusher/main.cpp", True)
+    convert_to_utf8("/home/sunlands/workspace/rtmp_pusher/main.cpp", "/home/sunlands/workspace/rtmp_pusher/main.cpp",
+                    True)
 
 
 if __name__ == '__main__':

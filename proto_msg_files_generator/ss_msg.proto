@@ -5,7 +5,7 @@ import "common.proto";
 
 message Demo2Req {
     int32 a = 1;
-    bool udp = 2;
+    int32 proto_tcp_thread_idx = 2;
 }
 
 message Demo2Rsp {
@@ -14,7 +14,6 @@ message Demo2Rsp {
 
 message Demo3Req {
     int32 a = 1;
-    bool udp = 2;
 }
 
 message Demo3Rsp {
@@ -24,18 +23,16 @@ message Demo3Rsp {
 enum Demo4Flag {
     option allow_alias = true;
     DEMO_4_FLAG_MIN = 0;
-    DEMO_4_FLAG_IO_TO_WORK = 0;
-    DEMO_4_FLAG_WORK_TO_WORK = 1;
-    DEMO_4_FLAG_WORK_TO_BURDEN = 2;
-    DEMO_4_FLAG_BURDEN_TO_BURDEN = 3;
-    DEMO_4_FLAG_MAX = 4;
+    DEMO_4_FLAG_XX = 0;
+    DEMO_4_FLAG_YY = 1;
+    DEMO_4_FLAG_MAX = 2;
 }
 
 message Demo4Req {
     int32 a = 1;
     int64 b = 2;
     string c = 3;
-    bytes d = 4; // post body
+    bytes d = 4;
     Demo4Flag flag = 5;
 }
 
@@ -45,7 +42,7 @@ message Demo4Rsp {
 
 message Demo5Req {
     int32 a = 1;
-    bool udp = 2;
+    int32 work_thread_idx = 2;
 }
 
 message Demo5Rsp {
@@ -54,17 +51,14 @@ message Demo5Rsp {
 
 message Demo6Req {
     int32 a = 1;
-    bool udp = 2;
 }
 
 message Demo6Rsp {
     ErrCtx err_ctx = 1;
 }
 
-
 message Demo7Req {
     int32 a = 1;
-    bool udp = 2;
 }
 
 message Demo7Rsp {
@@ -73,7 +67,6 @@ message Demo7Rsp {
 
 message Demo8Req {
     int32 a = 1;
-    bool udp = 2;
 }
 
 message Demo8Rsp {
@@ -82,7 +75,7 @@ message Demo8Rsp {
 
 message Demo9Req {
     int32 a = 1;
-    bool udp = 2;
+    int32 burden_thread_idx = 2;
 }
 
 message Demo9Rsp {
@@ -91,7 +84,6 @@ message Demo9Rsp {
 
 message Demo10Req {
     int32 a = 1;
-    bool udp = 2;
 }
 
 message Demo10Rsp {
@@ -100,7 +92,6 @@ message Demo10Rsp {
 
 message Demo20Req {
     int32 a = 1;
-    bool udp = 2;
 }
 
 message Demo20Rsp {
@@ -109,7 +100,6 @@ message Demo20Rsp {
 
 message Demo50Req {
     int32 a = 1;
-    bool udp = 2;
 }
 
 message Demo50Rsp {
@@ -118,7 +108,6 @@ message Demo50Rsp {
 
 message Demo90Req {
     int32 a = 1;
-    bool udp = 2;
 }
 
 message Demo90Rsp {
@@ -129,10 +118,10 @@ message Demo2Nfy {
     int32 a = 1;
 }
 
-message Demo4Nfy {
+message Demo5Nfy {
     int32 a = 1;
 }
 
-message Demo5Nfy {
+message Demo9Nfy {
     int32 a = 1;
 }
