@@ -165,7 +165,7 @@ def output_load_function(fp, xls_head_, xls_row, indent):
 
     # string
     table_string_1 = {'int': '', 'int64': '', 'float': '', 'double': '', 'bool': '',
-                      'string': '%schar* %s = NULL;%s' % (indent * 2, name, os.linesep)}
+                      'string': '%schar* %s = nullptr;%s' % (indent * 2, name, os.linesep)}
     table_string_2 = {'int': '', 'int64': '', 'float': '', 'double': '', 'bool': '',
                       'string': '%sconf_center_->ReleaseConf(&%s);%s' % (indent * 3, name, os.linesep)}
     table_string_3 = {'int': '', 'int64': '', 'float': '', 'double': '', 'bool': '',
@@ -197,7 +197,7 @@ def output_load_function(fp, xls_head_, xls_row, indent):
                    indent * 2, 'return 0;', os.linesep]
     else:
         content = [indent * 2, table1[type_], '* ', name,
-                   ' = NULL;', os.linesep,
+                   ' = nullptr;', os.linesep,
                    indent * 2, 'int n = 0;', os.linesep,
                    indent * 2, 'if (conf_center_->GetConf(&', name, ', n, ',
                    name.upper(), '_XPATH, ', with_default_str, ') != 0)', os.linesep,
