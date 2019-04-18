@@ -125,3 +125,351 @@ message Demo5Nfy {
 message Demo9Nfy {
     int32 a = 1;
 }
+
+///////////////////////////////////////////////////////////////////////////////
+message Demo1002Req {
+    int32 a = 1;
+    int32 raw_tcp_thread_idx = 2;
+}
+
+message Demo1002Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo1003Req {
+    int32 a = 1;
+}
+
+message Demo1003Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo1004Req {
+    int32 a = 1;
+    int64 b = 2;
+    string c = 3;
+    bytes d = 4;
+    Demo4Flag flag = 5;
+}
+
+message Demo1004Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo1005Req {
+    int32 a = 1;
+    int32 work_thread_idx = 2;
+}
+
+message Demo1005Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo1006Req {
+    int32 a = 1;
+}
+
+message Demo1006Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo1007Req {
+    int32 a = 1;
+}
+
+message Demo1007Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo1008Req {
+    int32 a = 1;
+}
+
+message Demo1008Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo1009Req {
+    int32 a = 1;
+    int32 burden_thread_idx = 2;
+}
+
+message Demo1009Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo1010Req {
+    int32 a = 1;
+}
+
+message Demo1010Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo1020Req {
+    int32 a = 1;
+}
+
+message Demo1020Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo1050Req {
+    int32 a = 1;
+}
+
+message Demo1050Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo1090Req {
+    int32 a = 1;
+}
+
+message Demo1090Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo1002Nfy {
+    int32 a = 1;
+}
+
+message Demo1005Nfy {
+    int32 a = 1;
+}
+
+message Demo1009Nfy {
+    int32 a = 1;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+message Demo2002Req {
+    int32 a = 1;
+    int32 http_thread_idx = 2;
+}
+
+message Demo2002Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo2003Req {
+    int32 a = 1;
+}
+
+message Demo2003Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo2004Req {
+    int32 a = 1;
+    int64 b = 2;
+    string c = 3;
+    bytes d = 4;
+    Demo4Flag flag = 5;
+}
+
+message Demo2004Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo2005Req {
+    int32 a = 1;
+    int32 work_thread_idx = 2;
+}
+
+message Demo2005Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo2006Req {
+    int32 a = 1;
+}
+
+message Demo2006Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo2007Req {
+    int32 a = 1;
+}
+
+message Demo2007Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo2008Req {
+    int32 a = 1;
+}
+
+message Demo2008Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo2009Req {
+    int32 a = 1;
+    int32 burden_thread_idx = 2;
+}
+
+message Demo2009Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo2010Req {
+    int32 a = 1;
+}
+
+message Demo2010Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo2020Req {
+    int32 a = 1;
+}
+
+message Demo2020Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo2050Req {
+    int32 a = 1;
+}
+
+message Demo2050Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo2090Req {
+    int32 a = 1;
+}
+
+message Demo2090Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo2002Nfy {
+    int32 a = 1;
+}
+
+message Demo2005Nfy {
+    int32 a = 1;
+}
+
+message Demo2009Nfy {
+    int32 a = 1;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+message Demo3002Req {
+    int32 a = 1;
+    int32 ws_thread_idx = 2;
+}
+
+message Demo3002Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo3003Req {
+    int32 a = 1;
+}
+
+message Demo3003Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo3004Req {
+    int32 a = 1;
+    int64 b = 2;
+    string c = 3;
+    bytes d = 4;
+    Demo4Flag flag = 5;
+}
+
+message Demo3004Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo3005Req {
+    int32 a = 1;
+    int32 work_thread_idx = 2;
+}
+
+message Demo3005Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo3006Req {
+    int32 a = 1;
+}
+
+message Demo3006Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo3007Req {
+    int32 a = 1;
+}
+
+message Demo3007Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo3008Req {
+    int32 a = 1;
+}
+
+message Demo3008Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo3009Req {
+    int32 a = 1;
+    int32 burden_thread_idx = 2;
+}
+
+message Demo3009Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo3010Req {
+    int32 a = 1;
+}
+
+message Demo3010Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo3020Req {
+    int32 a = 1;
+}
+
+message Demo3020Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo3050Req {
+    int32 a = 1;
+}
+
+message Demo3050Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo3090Req {
+    int32 a = 1;
+}
+
+message Demo3090Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo3002Nfy {
+    int32 a = 1;
+}
+
+message Demo3005Nfy {
+    int32 a = 1;
+}
+
+message Demo3009Nfy {
+    int32 a = 1;
+}
