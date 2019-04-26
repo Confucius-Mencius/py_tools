@@ -34,3 +34,11 @@ message Demo200Req {
 message Demo200Rsp {
     ErrCtx err_ctx = 1;
 }
+
+message Demo300Req {
+    int32 a = 1;
+}
+
+message Demo300Rsp {
+    ErrCtx err_ctx = 1;
+}

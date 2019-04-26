@@ -126,10 +126,30 @@ message Demo9Nfy {
     int32 a = 1;
 }
 
+message Demo301Req {
+    int32 a = 1;
+}
+
+message Demo301Rsp {
+    ErrCtx err_ctx = 1;
+}
+
+message Demo301Nfy {
+    int32 a = 1;
+}
+
+message Demo302Req {
+    int32 a = 1;
+}
+
+message Demo302Rsp {
+    ErrCtx err_ctx = 1;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 message Demo1002Req {
     int32 a = 1;
-    int32 raw_tcp_thread_idx = 2;
+    int32 tcp_thread_idx = 2;
 }
 
 message Demo1002Rsp {
