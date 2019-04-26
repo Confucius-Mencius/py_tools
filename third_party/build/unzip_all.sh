@@ -8,4 +8,4 @@ SCRIPT_PATH=$(cd `dirname $0`; pwd)
 
 . ${SCRIPT_PATH}/common.sh
 
-UnzipAll 2>unzip_all.err
+UnzipAll 2>unzip_all.error.log

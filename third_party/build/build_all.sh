@@ -64,4 +64,4 @@ function BuildAll
     echo `date` >>build_time.txt
 }
 
-BuildAll 2>build_all.err
+BuildAll 2>build_all.error.log
