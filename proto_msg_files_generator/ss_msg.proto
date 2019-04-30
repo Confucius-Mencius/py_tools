@@ -146,6 +146,14 @@ message Demo302Rsp {
     ErrCtx err_ctx = 1;
 }
 
+message Demo303Req {
+    int32 a = 1;
+}
+
+message Demo303Rsp {
+    ErrCtx err_ctx = 1;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 message Demo1002Req {
     int32 a = 1;
