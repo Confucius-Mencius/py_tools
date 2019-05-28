@@ -10,6 +10,16 @@ import os
 import sys
 
 
+# Python获取路径的三种情况：获取函数定义所在脚本路径，获取调用函数脚本所在路径，获取启动Python解释器脚本所在路径。最常用的方式就是pathtest.py中current_path中获取路径的方式。
+
+# inspect.getfile(inspect.currentframe())和inspect.stack()[0][1]得到的是定义该函数的脚本文件的路径，包含脚本名称 
+
+# inspect.stack()[1][1]得到的是调用该脚本的脚本文件的路径，包含脚本名称
+
+# os.path.dirname（os.path.realpath(sys.argv[0])）得到的是执行python x.py命令时，脚本参数x.py（也就是argv[0]）所在路径
+
+# os.path.dirname（os.path.realpath(sys.path[0])）,根据sys.path[0],sys.path[1]，sys.path[2]取不同的值，获取调用函数脚本所在路径或者获取启动Python解释器脚本所在路径
+
 def script_dir():
     """
     获取调用该函数的脚本文件自身所在的绝对目录。
@@ -251,7 +261,8 @@ def demo005():
 
 
 if __name__ == '__main__':
-    demo005()
+    demo001()
     # demo002()
     # demo003()
     # demo004()
+    #demo005()
