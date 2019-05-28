@@ -61,6 +61,20 @@ function BuildAll
         exit 1
     fi
 
+    cd ${SCRIPT_PATH}
+    ./build_requests.sh
+    if [ $? -ne 0 ]; then
+        echo "failed to build requests"
+        exit 1
+    fi
+
+    cd ${SCRIPT_PATH}
+    ./build_requests_toolbelt.sh
+    if [ $? -ne 0 ]; then
+        echo "failed to build requests toolbelt"
+        exit 1
+    fi
+
     echo `date` >>build_time.txt
 }
 

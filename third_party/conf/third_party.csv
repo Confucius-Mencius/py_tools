@@ -5,3 +5,5 @@ NOSE,nose-1.3.7,tar.gz,1,https://pypi.python.org/pypi/nose
 CHARDET,chardet-3.0.4,tar.gz,1,https://pypi.python.org/pypi/chardet/
 CONCURRENT_LOG_HANDLER,ConcurrentLogHandler-0.9.1,tar.gz,1,https://pypi.python.org/pypi/ConcurrentLogHandler/
 WEBSOCKET_CLIENT,websocket_client-0.56.0,tar.gz,1,https://pypi.org/project/websocket-client/
+REQUESTS,requests-2.22.0,tar.gz,1,https://pypi.org/project/requests
+REQUESTS_TOOLBELT,requests-toolbelt-0.9.1,tar.gz,1,https://pypi.org/project/requests-toolbelt/
