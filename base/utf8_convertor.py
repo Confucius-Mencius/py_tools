@@ -95,18 +95,3 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
     do(os.path.realpath(args.dir), args.filename_ext_list)
-
-# def parse_args():
-#     """
-#     python utf8_convertor.py -d ../data -e .h .cpp
-#     """
-#     parser = argparse.ArgumentParser()
-#
-#     parser.add_argument('-d', type=str, dest='dir', metavar='DIR', help='dir', required=True)
-#     parser.add_argument('-e', type=str, dest='filename_ext_list', metavar='FILENAME_EXT', help='filename ext list',
-#                         required=True, nargs='*')
-#
-#     args = parser.parse_args()
-#     # print(args)
-#
-#     return args

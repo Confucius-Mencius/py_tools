@@ -4,25 +4,16 @@
 # author: BrentHuang (guang11cheng@qq.com)
 ###############################################################################
 
-import codecs;
+import codecs
 import chardet
 import os
 import sys
+import inspect
 
-
-# Python获取路径的三种情况：获取函数定义所在脚本路径，获取调用函数脚本所在路径，获取启动Python解释器脚本所在路径。最常用的方式就是pathtest.py中current_path中获取路径的方式。
-
-# inspect.getfile(inspect.currentframe())和inspect.stack()[0][1]得到的是定义该函数的脚本文件的路径，包含脚本名称 
-
-# inspect.stack()[1][1]得到的是调用该脚本的脚本文件的路径，包含脚本名称
-
-# os.path.dirname（os.path.realpath(sys.argv[0])）得到的是执行python x.py命令时，脚本参数x.py（也就是argv[0]）所在路径
-
-# os.path.dirname（os.path.realpath(sys.path[0])）,根据sys.path[0],sys.path[1]，sys.path[2]取不同的值，获取调用函数脚本所在路径或者获取启动Python解释器脚本所在路径
 
 def script_dir():
     """
-    获取调用该函数的脚本文件自身所在的绝对目录。
+    获取该函数定义所在脚本的父目录。
     """
 
     return os.path.split(os.path.realpath(__file__))[0]
@@ -195,9 +186,12 @@ def convert_to_utf8(from_file_path, to_file_path, add_bom=False):
         # (2) utf - 8 不用转，如果没有bom头就加上
         if 0 == from_file_encoding.lower().find('ascii'):
             return 0
-        elif -1 == from_file_encoding.lower().find('utf-8'):
-            if not os.path.exists(to_file_path):
-                create_file(to_file_path)
+
+        if not to_file_path:
+            return -1
+
+        if not os.path.exists(to_file_path):
+            create_file(to_file_path)
 
         to_file = open(to_file_path, 'wb')
 
@@ -224,16 +218,20 @@ def convert_to_utf8(from_file_path, to_file_path, add_bom=False):
 
 
 def demo001():
-    print os.getcwd()
-    print sys.path[0]  # 脚本文件自身所在的绝对目录，注意：这里的脚本文件指的是启动的那个脚本文件
-    print script_dir()
-    assert sys.path[0] == script_dir()
+    print(os.getcwd())  # 获取调用该函数的脚本的父目录
+    print(sys.path[0])  # 获取调用该函数的脚本的父目录
+    print(script_dir())  # 获取函数定义所在脚本的父目录
     assert '/tmp' == file_dir('/tmp/my_app.log')
-    assert os.getcwd() == file_dir('./my_app.log')
     assert 'my_app' == base_filename('/tmp/my_app.log')
     assert 'my_app' == base_filename('./my_app.log')
     assert '.log' == filename_ext('/tmp/my_app.log')
     assert '.log' == filename_ext('./my_app.log')
+
+    print('----')
+    print(os.path.dirname(os.path.abspath(inspect.stack()[0][1])))  # 获取函数定义所在脚本的父目录
+    print(os.path.dirname(os.path.abspath(inspect.stack()[1][1])))  # 获取调用该函数的脚本的父目录
+    print(os.path.split(os.path.realpath(__file__))[0])  # 获取函数定义所在脚本的父目录
+    print('----')
 
 
 def demo002():
@@ -242,27 +240,21 @@ def demo002():
 
 
 def demo003():
-    ret = replace_content(sys.path[0] + '/../data/xx_conf_mgr.h', ["Tcp TCP", "Io IO", "Cpu CPU", "Udp UDP"])
+    ret = replace_content(script_dir() + '/../data/xx_conf_mgr.h', ["Tcp TCP", "Io IO", "Cpu CPU", "Udp UDP"])
     assert 0 == ret
 
 
 def demo004():
-    gb2312_file = sys.path[0] + '/../data/AboutLayer.h'
-    utf8_file1 = sys.path[0] + '/../data/AboutLayer.h'
-    assert 0 == convert_to_utf8(gb2312_file, utf8_file1)
+    gb2312_file = script_dir() + '/../data/gb2312.txt'
+    utf8_file1 = script_dir() + '/../data/utf8.txt'
+    assert 0 == convert_to_utf8(gb2312_file, utf8_file1, False)
 
-    utf8_file = sys.path[0] + '/../data/utf8_file'
-    assert 0 == convert_to_utf8(utf8_file, None)
-
-
-def demo005():
-    convert_to_utf8("/home/sunlands/workspace/rtmp_pusher/main.cpp", "/home/sunlands/workspace/rtmp_pusher/main.cpp",
-                    True)
+    utf8_file2 = script_dir() + '/../data/utf8.txt'
+    assert 0 == convert_to_utf8(utf8_file1, utf8_file2, True)
 
 
 if __name__ == '__main__':
     demo001()
-    # demo002()
-    # demo003()
-    # demo004()
-    #demo005()
+    demo002()
+    demo003()
+    demo004()
