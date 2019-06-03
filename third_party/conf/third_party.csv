@@ -1,4 +1,5 @@
 key,basename,ext,use,note
+URLLIB3,urllib3-1.25.3,tar.gz,1,https://pypi.org/project/urllib3/
 XLRD,xlrd-1.2.0,tar.gz,1,https://pypi.python.org/pypi/xlrd
 XLSXWRITER,XlsxWriter-1.1.7,tar.gz,1,https://pypi.python.org/pypi/XlsxWriter
 NOSE,nose-1.3.7,tar.gz,1,https://pypi.python.org/pypi/nose

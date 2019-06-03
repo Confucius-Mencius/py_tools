@@ -20,6 +20,13 @@ function BuildAll
     echo `date` >build_time.txt
 
     cd ${SCRIPT_PATH}
+    ./build_urllib3.sh
+    if [ $? -ne 0 ]; then
+        echo "failed to build urllib3"
+        exit 1
+    fi
+
+    cd ${SCRIPT_PATH}
     ./build_xlrd.sh
     if [ $? -ne 0 ]; then
         echo "failed to build xlrd"
