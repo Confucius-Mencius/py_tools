@@ -36,3 +36,4 @@ build_time.txt
 build_all.err
 unzip_all.err
 
+/build/setuptools-*.zip
